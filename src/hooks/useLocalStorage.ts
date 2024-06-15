@@ -6,10 +6,14 @@ export default function useLocalStorage<T>(
   key: string,
   initialState: T
 ): [T, SetState<T>] {
-  const [value, setValue] = useState<T>(() => {
+  const [value, setValue] = useState<T>(initialState);
+
+  useEffect(() => {
     const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : initialState;
-  });
+    if (item) {
+      setValue(JSON.parse(item));
+    }
+  }, [key]);
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
