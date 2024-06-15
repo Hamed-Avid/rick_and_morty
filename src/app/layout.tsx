@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/provider/providers";
-import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Rick and Morty",
-  description: "rick and morty by grapql apollo",
+  description: "rick and morty with grapql and apollo",
 };
 
 export default function RootLayout({
@@ -21,10 +20,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-slate-950 max-w-screen min-h-screen`}
       >
-        <Provider>
-          <Toaster />
-          {children}
-        </Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
