@@ -45,7 +45,10 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
         {isLoading || (page && loading) ? (
           <Loading />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-7">
+          <div
+            data-id="characters"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-7"
+          >
             {characters.map((item) => (
               <CharacterCard key={item.id} item={item} />
             ))}
@@ -55,6 +58,7 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
 
       <footer className="flex items-center justify-center gap-10 my-10">
         <button
+          data-id="prev-btn"
           onClick={() =>
             data?.characters.info.prev && setPage(data?.characters.info.prev)
           }
@@ -65,6 +69,7 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
         </button>
 
         <button
+          data-id="next-btn"
           onClick={() =>
             data?.characters.info.next && setPage(data?.characters.info.next)
           }

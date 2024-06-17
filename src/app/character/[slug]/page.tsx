@@ -7,7 +7,6 @@ import { Get_Character } from "@/lib/queries";
 import type { Character } from "@/types/Character";
 import { useQuery } from "@apollo/client";
 import Link from "next/link";
-import { useState } from "react";
 
 type Props = {
   params: {
@@ -19,10 +18,12 @@ export default function Character({ params }: Props) {
   const { data, loading } = useQuery(Get_Character, {
     variables: { id: params.slug },
   });
+
   const [favorites, setFavorites] = useLocalStorage<Character[]>(
     "Favorites",
     []
   );
+
   const {
     id,
     name,
@@ -37,14 +38,17 @@ export default function Character({ params }: Props) {
   if (loading) return <Loading />;
 
   const addFavoriteHandler = () => {
-    setFavorites((prev) => [...prev, data?.character]);
+    setFavorites([...favorites, data?.character]);
   };
 
-  const isAdded = favorites.some((item) => item.id === id);
+  const isAdded = favorites.some((item: Character) => item.id === id);
 
   return (
     <>
-      <section className="col-span-2 flex-1 flex items-center justify-between bg-slate-800 rounded-xl m-5 pr-5">
+      <section
+        data-id="character-info"
+        className="col-span-2 flex-1 flex items-center justify-between bg-slate-800 rounded-xl m-5 pr-5"
+      >
         <div className="flex-1 flex items-center gap-5 rounded-xl">
           <img src={image} alt={name} className="w-40 rounded-xl" />
           <div className="flex flex-col gap-2">
@@ -66,6 +70,7 @@ export default function Character({ params }: Props) {
 
         <div className="flex-1 flex flex-col items-end justify-between gap-20">
           <Link
+            data-id="back-to-home"
             href={"/"}
             className="bg-slate-700 text-white font-bold py-1 px-4 rounded-xl"
           >
@@ -77,6 +82,7 @@ export default function Character({ params }: Props) {
             </p>
           ) : (
             <button
+              data-id="add-favorite"
               onClick={addFavoriteHandler}
               className="bg-slate-700 text-white font-bold py-1 px-4 rounded-xl"
             >

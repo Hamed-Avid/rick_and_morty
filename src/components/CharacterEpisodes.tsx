@@ -47,7 +47,7 @@ export default function CharacterEpisodes({ episodes }: Props) {
           </svg>
         </button>
       </div>
-      <ul className="flex flex-col gap-3 mt-3">
+      <ul data-id="character-episodes" className="flex flex-col gap-3 mt-3">
         {sortedEpisodes.map(({ id, name, air_date, episode }, index) => (
           <li key={id} className="flex items-center justify-between">
             <p className="text-white">
