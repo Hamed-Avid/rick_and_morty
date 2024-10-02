@@ -8,9 +8,10 @@ type Props = {
 
 export function CharacterModal({ favorites, onDelete }: Props) {
   return (
-    <ul data-id="character-favorites" className="flex flex-col min-w-60 gap-3">
+    <ul className="flex flex-col min-w-60 gap-3 hover:scale-105">
       {favorites.map(({ id, name, gender, image, status, species }) => (
         <li
+          data-test={`character-${id}`}
           key={id}
           className="flex items-center justify-between text-white bg-slate-800 cursor-pointer rounded-xl gap-5 p-5 whitespace-nowrap"
         >
@@ -32,7 +33,7 @@ export function CharacterModal({ favorites, onDelete }: Props) {
               <span> - {species}</span>
             </p>
           </div>
-          <button data-id={`delete-character-${id}`} onClick={() => onDelete(id)}>
+          <button onClick={() => onDelete(id)}>
             <svg
               fill="none"
               viewBox="0 0 24 24"

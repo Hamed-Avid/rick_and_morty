@@ -35,3 +35,16 @@
 //     }
 //   }
 // }
+
+declare namespace Cypress {
+  interface Chainable {
+    getByData(
+      dataTestAttribute: string,
+      elementAttribute?: keyof HTMLElementTagNameMap
+    ): Chainable<JQuery<HTMLElement>>;
+  }
+}
+
+Cypress.Commands.add("getByData", (selector, element="") => {
+  return cy.get(`[data-test=${selector}] ${element}`);
+});

@@ -26,9 +26,12 @@ export default function CharacterEpisodes({ episodes }: Props) {
   if (!sortedEpisodes) return <Loading />;
 
   return (
-    <section className="bg-slate-800 mt-10 p-3 rounded-xl m-5">
+    <section
+      data-test="character-episodes"
+      className="bg-slate-800 mt-10 p-3 rounded-xl m-5"
+    >
       <div className="flex items-center justify-between">
-        <h2 className="text-slate-400 font-bold">List of Episodes:</h2>
+        <h3 className="text-slate-400 font-bold">List of Episodes:</h3>
         <button onClick={() => setSortBy((prev) => !prev)}>
           <svg
             fill="none"
@@ -47,7 +50,7 @@ export default function CharacterEpisodes({ episodes }: Props) {
           </svg>
         </button>
       </div>
-      <ul data-id="character-episodes" className="flex flex-col gap-3 mt-3">
+      <ul className="flex flex-col gap-3 mt-3">
         {sortedEpisodes.map(({ id, name, air_date, episode }, index) => (
           <li key={id} className="flex items-center justify-between">
             <p className="text-white">

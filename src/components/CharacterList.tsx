@@ -6,7 +6,7 @@ import { CharacterCard } from "./CharacterCard";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CHARACTERS } from "@/lib/queries";
 import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Header";
 
 type Props = {
   charactersData: Character[];
@@ -46,7 +46,7 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
           <Loading />
         ) : (
           <div
-            data-id="characters"
+            data-test="characters"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-7"
           >
             {characters.map((item) => (
@@ -58,7 +58,7 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
 
       <footer className="flex items-center justify-center gap-10 my-10">
         <button
-          data-id="prev-btn"
+          data-test="prev-btn"
           onClick={() =>
             data?.characters.info.prev && setPage(data?.characters.info.prev)
           }
@@ -69,7 +69,7 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
         </button>
 
         <button
-          data-id="next-btn"
+          data-test="next-btn"
           onClick={() =>
             data?.characters.info.next && setPage(data?.characters.info.next)
           }

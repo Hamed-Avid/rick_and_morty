@@ -4,7 +4,7 @@ import client from "@/lib/client";
 import { GET_ALL_CHARACTERS } from "@/lib/queries";
 import { Suspense } from "react";
 
-export default async function Home() {
+export default async function HomePage() {
   const { data, loading } = await client.query({
     query: GET_ALL_CHARACTERS,
     variables: { page: 1 },

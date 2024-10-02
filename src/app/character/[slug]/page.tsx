@@ -46,7 +46,7 @@ export default function Character({ params }: Props) {
   return (
     <>
       <section
-        data-id="character-info"
+        data-test="character-info"
         className="col-span-2 flex-1 flex items-center justify-between bg-slate-800 rounded-xl m-5 pr-5"
       >
         <div className="flex-1 flex items-center gap-5 rounded-xl">
@@ -70,7 +70,7 @@ export default function Character({ params }: Props) {
 
         <div className="flex-1 flex flex-col items-end justify-between gap-20">
           <Link
-            data-id="back-to-home"
+            data-test="back-to-home"
             href={"/"}
             className="bg-slate-700 text-white font-bold py-1 px-4 rounded-xl"
           >
@@ -82,7 +82,6 @@ export default function Character({ params }: Props) {
             </p>
           ) : (
             <button
-              data-id="add-favorite"
               onClick={addFavoriteHandler}
               className="bg-slate-700 text-white font-bold py-1 px-4 rounded-xl"
             >
