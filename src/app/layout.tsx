@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} bg-slate-950 max-w-screen min-h-screen`}
+        className={`${inter.className} bg-slate-950 max-w-screen min-h-screen lg:max-w-7xl lg:mx-auto`}
       >
         <Provider>{children}</Provider>
       </body>

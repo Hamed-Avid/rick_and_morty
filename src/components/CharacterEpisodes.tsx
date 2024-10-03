@@ -52,14 +52,15 @@ export default function CharacterEpisodes({ episodes }: Props) {
       </div>
       <ul className="flex flex-col gap-3 mt-3">
         {sortedEpisodes.map(({ id, name, air_date, episode }, index) => (
-          <li key={id} className="flex items-center justify-between">
-            <p className="text-white">
+          <li
+            key={id}
+            className="flex flex-col md:flex-row items-center justify-between hover:bg-slate-700 hover:p-2 hover:rounded-lg cursor-pointer text-white text-center gap-2"
+          >
+            <p>
               {String(++index).padStart(2, "0")} - {episode} :
               <strong>{name}</strong>
             </p>
-            <p className="text-white bg-slate-600 px-2 rounded-xl">
-              {air_date}
-            </p>
+            <p className="bg-slate-600 px-2 rounded-xl">{air_date}</p>
           </li>
         ))}
       </ul>

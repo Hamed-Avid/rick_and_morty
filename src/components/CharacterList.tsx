@@ -47,7 +47,7 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
         ) : (
           <div
             data-test="characters"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-7"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto gap-7"
           >
             {characters.map((item) => (
               <CharacterCard key={item.id} item={item} />
@@ -56,29 +56,31 @@ export default function CharacterList({ charactersData, isLoading }: Props) {
         )}
       </section>
 
-      <footer className="flex items-center justify-center gap-10 my-10">
-        <button
-          data-test="prev-btn"
-          onClick={() =>
-            data?.characters.info.prev && setPage(data?.characters.info.prev)
-          }
-          disabled={!data?.characters.info.prev}
-          className="text-slate-300 bg-slate-600 rounded-md hover:bg-slate-500 disabled:bg-slate-700 w-24 p-2"
-        >
-          Prev
-        </button>
+      {!!characters.length && !loading && (
+        <footer className="flex items-center justify-center gap-10 my-10">
+          <button
+            data-test="prev-btn"
+            onClick={() =>
+              data?.characters.info.prev && setPage(data?.characters.info.prev)
+            }
+            disabled={!data?.characters.info.prev}
+            className="text-slate-300 bg-slate-600 rounded-md hover:bg-slate-500 disabled:bg-slate-700 w-24 p-2"
+          >
+            Prev
+          </button>
 
-        <button
-          data-test="next-btn"
-          onClick={() =>
-            data?.characters.info.next && setPage(data?.characters.info.next)
-          }
-          disabled={!data?.characters.info.next}
-          className="text-slate-300 bg-slate-600 rounded-md hover:bg-slate-500 disabled:bg-slate-700 w-24 p-2"
-        >
-          Next
-        </button>
-      </footer>
+          <button
+            data-test="next-btn"
+            onClick={() =>
+              data?.characters.info.next && setPage(data?.characters.info.next)
+            }
+            disabled={!data?.characters.info.next}
+            className="text-slate-300 bg-slate-600 rounded-md hover:bg-slate-500 disabled:bg-slate-700 w-24 p-2"
+          >
+            Next
+          </button>
+        </footer>
+      )}
     </>
   );
 }
