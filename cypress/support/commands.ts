@@ -45,6 +45,9 @@ declare namespace Cypress {
   }
 }
 
-Cypress.Commands.add("getByData", (selector, element="") => {
-  return cy.get(`[data-test=${selector}] ${element}`);
-});
+Cypress.Commands.add(
+  "getByData",
+  (selector, element: keyof HTMLElementTagNameMap | undefined) => {
+    return cy.get(`[data-test=${selector}] ${element ? element : ""}`);
+  }
+);
