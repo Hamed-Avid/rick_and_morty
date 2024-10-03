@@ -23,7 +23,7 @@ export default function Modal({ children, title, handler }: Props) {
           <h5 className="text-slate-400 font-bold md:text-lg whitespace-nowrap">
             {title}
           </h5>
-          <button onClick={handler}>
+          <button data-test="close" onClick={handler}>
             <svg
               fill="none"
               viewBox="0 0 24 24"

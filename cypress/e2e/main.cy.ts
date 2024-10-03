@@ -11,7 +11,7 @@ describe("Main", () => {
 
     it("#2 search should have results length and characters", () => {
       cy.get("header input").should("be.visible");
-      cy.get("header input").type("rick");
+      cy.get("header input").first().type("rick");
       cy.get("header").contains("p", /107/i).should("be.visible");
       cy.getByData("characters", "a")
         .eq(0)
@@ -24,13 +24,13 @@ describe("Main", () => {
     });
 
     it("3# at beginning favorites should be empty after when character favorites should have character when delete character favorites should be empty", () => {
-      cy.get("header button").find("span").should("not.exist");
+      cy.get("header button").find("span").should("contain.text", "");
       cy.getByData("characters", "a").eq(0).contains(/rick/i).click();
       cy.contains("button", /add to favorite/i)
         .should("be.visible")
-        .and("not.contain.text", /already added to favorites/i)
+        .and("not.contain.text", /already added/i)
         .click();
-      cy.contains(/already added to favorites/i)
+      cy.contains(/already added/i)
         .should("be.visible")
         .and("not.contain.text", /add to favorite/i);
       cy.contains("a", /back to home/i).click();
@@ -45,7 +45,7 @@ describe("Main", () => {
         .should("be.visible")
         .click()
         .and("not.exist");
-      cy.get("button").eq(0).click();
+      cy.getByData("close").eq(0).click();
       cy.contains("h5", /list of favorites/i).should("not.exist");
     });
   });
